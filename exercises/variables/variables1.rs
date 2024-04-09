@@ -7,6 +7,6 @@
 
 
 fn main() {
-    let x:u32 = 5;
+    let mut x:u32 = 5;
     println!("x has the value {}", x);
 }
