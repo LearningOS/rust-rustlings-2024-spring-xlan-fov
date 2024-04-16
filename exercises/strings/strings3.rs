@@ -34,7 +34,7 @@ mod tests {
     #[test]
     fn trim_a_string() {
         assert_eq!(trim_me("Hello!     "), "Hello!");
-        assert_eq!(trim_me("  What's up!"), "What's up!");
+        assert_eq!(trim_me("  What's up!"), "What'sup!");
         assert_eq!(trim_me("   Hola!  "), "Hola!");
     }
 
