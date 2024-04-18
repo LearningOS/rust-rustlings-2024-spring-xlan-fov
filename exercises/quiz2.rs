@@ -20,7 +20,6 @@
 //
 // No hints this time!
 
-// I AM NOT DONE
 
 pub enum Command {
     Uppercase,
@@ -32,36 +31,39 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: Vec<(&str,Command)>) -> Vec<&str> {
+    pub fn transformer(input: Vec<(&str,Command)>) -> Vec<String> {
         // TODO: Complete the output declaration!
-        let mut output: Vec<&str> = vec![];
+        let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
             let mut t=String::from("t");
-            let res = match *command {
-                Command::Uppercase => {
+            let res:String = match *command {
+                super::Command::Uppercase => {
                     let mut tstring =(*string).to_string();
                     tstring.make_ascii_uppercase();
                     t=tstring.to_string();
-                    t.as_mut_str()
+                    t.clone()
                 },
-                Command::Trim => {
-                    let mut tstring =(*string).to_string();
-                    tstring.trim();
-                    t=tstring;
-                    t.as_mut_str()
+                super::Command::Trim => {
+                    //let mut tstring: =(*string).to_string();
+                    let mut string:&str = string.clone();
+                    t=string.trim().to_string();
+                    //t=string.to_string();
+                    println!("T is 1{}1",string.trim());
+                    t.clone()
                 },
-                Command::Append(unum) => {
+                super::Command::Append(unum) => {
+                    let mut unum=unum;
                     let mut tstring =(*string).to_string();
                     while unum>0 {
-                        unum-=1;
+                        unum=unum-1;
                         tstring.push_str("bar");
                     }
                     t=tstring;
-                    t.as_mut_str()
+                    t.clone()
                 },
             };
-            output.push(t);
+            output.push(res);
         }
         output
     }
